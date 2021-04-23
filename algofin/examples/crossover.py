@@ -1,4 +1,4 @@
-from algofin.data import fetch_data, risk_free_rate
+from algofin.data import fetch_data
 from algofin.backtest import Backtest
 from algofin.strategies import EMACrossover
 
