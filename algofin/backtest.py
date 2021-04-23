@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 from algofin.orders import OrderFlag, MarketOrder, OrderBook
 
 class Backtest:
-    def __init__(self, strategy, hist, capital=1000000, cost=0):
+    def __init__(self, strategy, hist, capital=1000000):
         self.strategy = strategy
         self.hist = hist.copy()
         self.strategy.load_hist(self.hist)
         self.initial_capital = capital
-        self.cost = cost
+        self.cost = self.strategy.cost
 
         self.order_book = OrderBook()
 
