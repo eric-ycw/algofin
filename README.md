@@ -1,8 +1,7 @@
 # algofin
 A lightweight algorithmic trading and backtesting library. Currently in development.
 
-## Example
-
+## Examples
 ```
 from algofin.data import fetch_data
 from algofin.backtest import Backtest
@@ -16,3 +15,16 @@ backtest.run()
 backtest.plot_pl()
 ```
 <img src="/images/crossover_pl.png" alt="EMACrossover P&L" width="600"/>
+
+```
+from algofin.data import fetch_data
+from algofin.indicators import RSI, plot_RSI
+
+df = fetch_data('BTC-USD', '2021-01-01', '2021-04-01')
+
+df['RSI_14'] = RSI(df, df['Close'])
+df.dropna(inplace=True)
+
+plot_RSI(df['RSI_14'])
+```
+<img src="/images/btc_rsi.png" alt="Bitcoin RSI" width="600"/>
