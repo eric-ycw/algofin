@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 from algofin.utils import mean_normalization, min_max_normalization
 
@@ -31,6 +32,12 @@ def RSI(df, close, t=14):
     rs = df_copy['u'].ewm(span=t, min_periods=t).mean() / df_copy['d'].ewm(span=t, min_periods=t).mean()
 
     return 100 - 100 / (1 + rs)
+
+def plot_RSI(rsi, overbought=70, oversold=30):
+    plt.plot(rsi)
+    plt.axhline(y=70, color='r', linestyle='--', label='Overbought (70)')
+    plt.axhline(y=30, color='g', linestyle='--', label='Oversold (30)')
+    plt.show()
 
 def WilliamsR(price, high, low, t=14):
     t_high = high.rolling(window=t, min_periods=t).apply(max)
