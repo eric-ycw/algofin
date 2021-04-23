@@ -19,7 +19,7 @@ class EMACrossover(Strategy):
         assert(self.t1 < self.t2)
 
     def load_hist(self, hist):
-        self.hist = hist.copy()
+        self.hist = hist
         self.hist['EMA_'+str(self.t1)] = EMA(self.hist['Close'], t=self.t1)
         self.hist['EMA_'+str(self.t2)] = EMA(self.hist['Close'], t=self.t2)
         self.hist.dropna(inplace=True)
@@ -34,6 +34,8 @@ class EMACrossover(Strategy):
 
         labels = [OrderFlag.BUY, (OrderFlag.SELL if self.short else OrderFlag.HOLD)]
         self.hist['Signal'] = np.select(signals, labels, default=OrderFlag.HOLD)
+
+        self.hist.drop(['EMA_'+str(self.t1), 'EMA_'+str(self.t2), 'Pos', 'PrevPos'], axis=1, inplace=True)
 
 
     def get_signal(self, date, capital):

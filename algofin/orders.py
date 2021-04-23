@@ -63,14 +63,10 @@ class MarketOrder:
 
     def print(self):
         print(pd.Series(
-            [self.flag, self.entry, self.exit, \
-             self.adj_entry, self.adj_exit, \
-             self.start_date, self.end_date, \
-             self.volume, self.cost, self.pl],
-            ['Order Type', 'Entry', 'Exit', \
-             'Adjusted Entry', 'Adjusted Exit', \
-             'Start Date', 'End Date', \
-             'Volume', 'Cost %', 'Order P&L']
+            [self.flag, self.entry, self.exit, self.adj_entry, self.adj_exit, \
+             self.start_date, self.end_date, self.volume, self.cost, self.pl],
+            ['Order Type', 'Entry', 'Exit', 'Adjusted Entry', 'Adjusted Exit', \
+             'Start Date', 'End Date', 'Volume', 'Cost %', 'Order P&L']
         ))
 
 class OrderBook:
@@ -133,9 +129,3 @@ class OrderBook:
     def print_orders(self):
         for order in self.book:
             order.print()
-
-    def print(self):
-        print(pd.Series(
-            [self.unrealized_pl, self.pl, self.capital],
-            ['Unrealized P&L', 'Realized P&L', 'Capital']
-        ))
