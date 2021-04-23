@@ -4,7 +4,7 @@ A lightweight algorithmic trading and backtesting library. Currently in developm
 ## Examples
 Running a backtest can be done in a few lines of code. Let's say we want to try out a crossover strategy on General Motors' stock using 5-day and 20-day exponential moving averages.
 ```
-from algofin.data import fetch_data, risk_free_rate
+from algofin.data import fetch_data
 from algofin.backtest import Backtest
 from algofin.strategies import EMACrossover
 
