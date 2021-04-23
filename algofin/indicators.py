@@ -1,7 +1,13 @@
 import numpy as np
 import pandas as pd
 
-from algofin.utils.tools import mean_normalization, min_max_normalization
+from algofin.utils import mean_normalization, min_max_normalization
+
+def SMA(close, t=15):
+    return close.rolling(window=t, min_periods=t).mean()
+
+def EMA(close, t=15):
+    return close.ewm(span=t, min_periods=t).mean()
 
 def MACD(close, t1=12, t2=26):
     assert(t2 > t1)
@@ -35,7 +41,7 @@ def fill_indicators(df, normalization=None):
     indicators = ['EMA_15', 'MACD', 'StochasticK', 'StochasticD', 'RSI', 'WilliamsR']
 
     df['ClosePctChange'] = df['Close'].pct_change()
-    df['EMA_15'] = df['Close'].ewm(span=15, min_periods=15).mean()
+    df['EMA_15'] = EMA(df['Close'], t=15)
     df['MACD'] = MACD(df['Close'])
     df['StochasticK'] = StochasticK(df['Close'], df['High'], df['Low'])
     df['StochasticD'] = StochasticD(df['StochasticK'])
