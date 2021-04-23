@@ -27,3 +27,4 @@ df.dropna(inplace=True)
 
 plot_RSI(df['RSI_14'])
 ```
+<img src="/images/bitcoin_rsi.png" alt="Bitcoin RSI" width="600"/>
