@@ -34,9 +34,10 @@ def RSI(df, close, t=14):
     return 100 - 100 / (1 + rs)
 
 def plot_RSI(rsi, overbought=70, oversold=30):
-    plt.plot(rsi)
+    plt.plot(rsi, label='RSI')
     plt.axhline(y=70, color='r', linestyle='--', label='Overbought (70)')
     plt.axhline(y=30, color='g', linestyle='--', label='Oversold (30)')
+    plt.legend()
     plt.show()
 
 def WilliamsR(price, high, low, t=14):
