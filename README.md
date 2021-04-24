@@ -46,7 +46,7 @@ Algofin also comes with popular indicators for technical analysis. Let's say we 
 from algofin.data import fetch_data
 from algofin.indicators import RSI, plot_RSI
 
-df = fetch_data('BTC-USD', '2021-01-01', '2021-04-01')
+df = fetch_data('BTC-USD', '2020-11-20', '2021-04-20')
 
 df['RSI_14'] = RSI(df, df['Close'])
 df.dropna(inplace=True)
