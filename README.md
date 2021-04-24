@@ -40,7 +40,7 @@ backtest.plot_capital()
 ```
 <img src="/images/backtest_capital.png" alt="Backtest Capital" width="600"/>
 
-Algofin also comes with popular indicators for technical analysis. Let's say we want to take a look at the relative strength index of Bitcoin for the last 3 months. This can again be done in a few lines of code.
+Algofin also comes with popular indicators for technical analysis. Let's say we want to take a look at the relative strength index of Bitcoin for the last 5 months. This can again be done in a few lines of code.
 
 ```
 from algofin.data import fetch_data
