@@ -4,7 +4,7 @@ A lightweight algorithmic trading and backtesting library. Currently in developm
 ## Examples
 ### Backtesting
 Running a backtest can be done in a few lines of code. Let's say we want to try out a crossover strategy on General Motors' stock using 5-day and 20-day exponential moving averages.
-```
+```python
 from algofin.data import fetch_data
 from algofin.backtest import Backtest
 from algofin.strategies import EMACrossover
@@ -34,19 +34,19 @@ Max Drawdown               -0.147667
 
 We can also easily visualise our strategy's P&L and capital management throughout the backtest.
 
-```
+```python
 backtest.plot_pl()
 ```
 <img src="/images/backtest_pl.png" alt="Backtest P&L" width="600"/>
 
-```
+```python
 backtest.plot_capital()
 ```
 <img src="/images/backtest_capital.png" alt="Backtest Capital" width="600"/>
 
 We can also run a backtest on a portfolio of instruments using the PortfolioBacktest class.
 
-```
+```python
 from algofin.backtest import PortfolioBacktest
 
 labels = ['FB', 'AMZN', 'AAPL', 'NFLX', 'GOOGL']
@@ -67,7 +67,7 @@ backtest_2.plot_pl_breakdown()
 ### Indicators
 Algofin comes with popular indicators for technical analysis. For example, we can quickly take a look at the relative strength index of Bitcoin for the last 5 months.
 
-```
+```python
 from algofin.data import fetch_data
 from algofin.indicators import RSI, plot_RSI
 
