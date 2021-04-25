@@ -23,18 +23,18 @@ def StochasticK(price, high, low, t=5):
 def StochasticD(sK, t=3):
     return sK.rolling(window=t, min_periods=t).mean()
 
-def RSI(df, close, t=14):
-    df_copy = df.copy()
+def RSI(close, t=14):
     diff = close.diff()
-    df_copy['u'] = np.where(diff > 0, diff, 0)
-    df_copy['d'] = np.where(diff < 0, -diff, 0)
+    u = diff.where(diff > 0, 0)
+    d = -diff.where(diff < 0, 0)
 
-    rs = df_copy['u'].ewm(span=t, min_periods=t).mean() / df_copy['d'].ewm(span=t, min_periods=t).mean()
+    rs = u.ewm(span=t, min_periods=t).mean() / d.ewm(span=t, min_periods=t).mean()
 
     return 100 - 100 / (1 + rs)
 
 def plot_RSI(rsi, overbought=70, oversold=30):
-    plt.plot(rsi, label='RSI')
+    rsi_copy = rsi.copy().dropna()
+    plt.plot(rsi_copy, label='RSI')
     plt.axhline(y=70, color='r', linestyle='--', label='Overbought (70)')
     plt.axhline(y=30, color='g', linestyle='--', label='Oversold (30)')
     plt.legend()
